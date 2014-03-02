@@ -1,0 +1,34 @@
+body {
+    font-family: helvetica;
+    color: #333;
+}
+
+#chat {
+    right: 10px;
+    left: 30px;
+    background: #AAA;
+    width: 420px;
+    margin-top: 10px;
+}
+
+.msg {
+    padding: 10px;
+    width: 400px;
+    background: #FF9966;
+}
+
+.others {
+    background: #99D8FF;
+}
+
+.server {
+    background: #FF69B4;
+}
+
+#textField {
+    width: 220px;
+}
+
+#nameField {
+    width: 120px;
+}

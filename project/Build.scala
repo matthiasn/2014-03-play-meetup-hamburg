@@ -33,7 +33,9 @@ object ApplicationBuild extends Build with UniversalKeys {
       dist <<= dist dependsOn (optimizeJS in (scalajs, Compile)),
       watchSources <++= (sourceDirectory in (scalajs, Compile)).map { path => (path ** "*.scala").get},
       sharedScalaSetting,
-      libraryDependencies ++= Seq()
+      resolvers += Resolver.url("scala-js-releases",
+        url("http://dl.bintray.com/content/scala-js/scala-js-releases"))(Resolver.ivyStylePatterns),
+      libraryDependencies += "org.scalajs" %% "scalajs-pickling-play-json" % "0.1"
     ) ++ (
       // ask scalajs project to put its outputs in scalajsOutputDir
       Seq(packageExternalDepsJS, packageInternalDepsJS, packageExportedProductsJS, optimizeJS) map {
@@ -51,7 +53,9 @@ object ApplicationBuild extends Build with UniversalKeys {
       sharedScalaSetting,
       libraryDependencies ++= Seq(
         "org.scala-lang.modules.scalajs" %% "scalajs-jasmine-test-framework" % scalaJSVersion % "test",
-        "org.scala-lang.modules.scalajs" %% "scalajs-dom" % "0.3-SNAPSHOT"
+        "org.scala-lang.modules.scalajs" %% "scalajs-dom" % "0.3-SNAPSHOT",
+        "org.scalajs" %% "scalajs-pickling" % "0.1",
+        "org.scala-lang.modules.scalajs" %% "scalajs-jquery" % "0.1-SNAPSHOT"
       )
     )
 
